@@ -1,12 +1,3 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2761
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\sa213\partightenfactor0
-
-\f0\fs29\fsmilli14667 \cf0 \expnd0\expndtw0\kerning0
 ## Week 1\
 Lucy shared graphs and talked them through the data\
 Wassem shared cosine similarity findings, can use Lucy\'92s song data to work on next part\
