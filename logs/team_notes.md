@@ -15,11 +15,11 @@
   *Week 6 Waseem doing tipy tappy write up\
 
 ## Week 2
-*Lucy
-  *Made bins for each of the features
-  *Created genre clusters, where each cluster represents a group of similar genres
-  *Realsied didn’t save names of genres, but does not matter
-*Jakub
+*Lucy\
+  *Made bins for each of the features\
+  *Created genre clusters, where each cluster represents a group of similar genres\
+  *Realsied didn’t save names of genres, but does not matter\
+*Jakub\
   *Took user data, tried to turn it into a database
   *Database very large and sparse, too big for pandas SQL
   *Jakub going to try db browser or other software
