@@ -6,7 +6,7 @@ from kagglehub import KaggleDatasetAdapter
 
 
 
-path = "other_option.csv"
+path = "data/song_data.csv"
 df = pd.read_csv(path)
 
 print(df.head())  # First few rows
@@ -14,11 +14,8 @@ print(df.info())  # Column names, data types, and non-null counts
 print(df.describe())  # Summary statistics for numerical columns
 print(df.isnull().sum())  # Count of missing values per column
 
-missing_city = df[df['Track Preview URL'].isnull()]
+df.to_excel("song_data.xlsx", index=False)
 
-# Display the rows with missing data in 'City'
-
-print(missing_city)
 
 
 
