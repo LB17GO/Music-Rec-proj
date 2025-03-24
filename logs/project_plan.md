@@ -24,7 +24,7 @@
 
 ---
 
-## Week 3: Collaborative Filtering
+## Week 3: Building Basic Models
 
 | Member  | Tasks                          | Details                                                                                       |
 |---------|--------------------------------|-----------------------------------------------------------------------------------------------|
@@ -32,10 +32,13 @@
 | Jakub   | Build basic CF model    | - Create a user-item interaction matrix (e.g., user-song plays or ratings). <br> - Implement a basic version of a collaborative filtering algorithm (e.g., SVD, KNN). |
 | Waseem  | Build basic CB model    | - Extract song features (e.g., genre, tempo, danceability). <br> - Compute similarity between songs (e.g., cosine similarity <br> Start builiding basic CB model |
 
-**Team Meeting**: Review basic CF and CB models, ensure both can be combined later, discuss website research
+**Team Meeting**: 
+Review basic CF and CB models, ensure both can be combined later, discuss website research
+
+
 ---
 
-## Week 4: Content-Based Filtering
+## Week 4: Finishing and Evaluating Models
 
 | Member  | Tasks                          | Details                                                                                       |
 |---------|--------------------------------|-----------------------------------------------------------------------------------------------|
