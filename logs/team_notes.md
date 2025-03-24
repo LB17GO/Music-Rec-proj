@@ -1,39 +1,56 @@
-## Week 1
-*Lucy shared graphs and talked them through the data\
-*Wassem shared cosine similarity findings, can use Lucy's song data to work on next part\
-*Jakub shared research on how he will use user listening data\
-*Next steps\
-  *Lucy does not have user listening data, but will find user listening data for Jakub and clean it and stuff so Jakub can use it\
-  *Genre quantitive, make it so we can compare similar genres\
-  *Change it so week 3 and 4 both Jakub and Waseem are coding their respective models\
-  *Lucy will be doing some research on how to improve, extra features adding\
-  *Implement extra meetings to go over compatibility of algorithms and keep them accountable\
-  *Lucy week 4 research and suggesting improvements\
-  *Lucy week 5 start on user interface and web app\
-  *Week 5 Waseem and Jakub (with Lucy's help) put two algorithms together and test it\
-  *Week 6 combine algorithms with web app (or API), Lucy and Jakub do this\
-  *Week 6 Waseem doing tipy tappy write up\
+# **Week 1**
+- **Lucy**  
+  - Shared graphs and explained the data.  
 
-## Week 2
-*Lucy\
-  *Made bins for each of the features\
-  *Created genre clusters, where each cluster represents a group of similar genres\
-  *Realsied didn’t save names of genres, but does not matter\
-*Jakub\
-  *Took user data, tried to turn it into a database
-  *Database very large and sparse, too big for pandas SQL
-  *Jakub going to try db browser or other software
-  *Might need to reduce dataset 
-*Waseem
-  *Trying to put songs into a relational database, but not all data useful
-  *Going to seperate into a table for data processing and a table for the future website
-  *Primary key could be Q
-*Next Steps
-  *We're going to combine weeks 3 and 4
-  *Both Jakub and Waseem will start on their respective models
-  *By next meeting, have a very basic model
-  *We'll all review the code 
-  *Make sure that both models can be combined in the future
-  *Lucy wil research how to combine the algorithm with a website and start planning website 
+- **Waseem**  
+  - Presented cosine similarity findings.  
+  - Can use Lucy's song data for the next phase.  
+
+- **Jakub**  
+  - Shared research on how he will use user listening data.  
+
+- **Next Steps**  
+  - Lucy does not have user listening data but will find and clean it for Jakub.  
+  - Make genre data quantitative to allow for similarity comparisons.  
+  - Adjust the timeline so that in **Week 3 and 4**, both Jakub and Waseem work on coding their respective models.  
+  - Lucy will conduct research on potential improvements and additional features.  
+  - Implement extra meetings to ensure algorithm compatibility and maintain accountability.  
+  - **Week 4:** Lucy continues research and suggests improvements.  
+  - **Week 5:**  
+    - Lucy starts on the user interface and web app.  
+    - Jakub and Waseem (with Lucy's help) integrate both algorithms and begin testing.  
+  - **Week 6:**  
+    - Combine the algorithms with the web app (or API); Lucy and Jakub will handle this.  
+    - Waseem will work on writing documentation.  
+
+---
+
+# **Week 2**
+- **Lucy**  
+  - Created bins for each feature.  
+  - Developed genre clusters, grouping similar genres together.  
+  - Realized genre names were not saved, but this does not affect the process.  
+
+- **Jakub**  
+  - Imported user data and attempted to convert it into a database.  
+  - The database is too large and sparse, making it impractical for **Pandas SQL**.  
+  - Will explore alternative tools such as **DB Browser** or other software for large-scale data handling.  
+  - May need to reduce the dataset size.  
+
+- **Waseem**  
+  - Working on structuring songs into a **relational database**.  
+  - Identified that not all data is useful and will separate it into:  
+    - A table for **data processing**.  
+    - A table for the **future website**.  
+  - Considering **Column Q** as the **primary key** for the data processing table.  
+
+- **Next Steps**  
+  - **Weeks 3 and 4** will be merged into a single phase.  
+  - Both Jakub and Waseem will start developing their respective models.  
+  - By the next meeting, a **very basic model** should be completed.  
+  - Everyone will review the code to ensure alignment.  
+  - Ensure that both models can be combined in the future.  
+  - Lucy will research how to integrate the algorithm into a website and start planning the web development phase.  
+
 
 
