@@ -12,12 +12,12 @@ body{
 }
 
 nav .home{
-    color: #F05D23;
+    color: #1ED760;
     font-size: 2rem;
 }
 
 nav .title{
-    color: #F05D23;
+    color: #1ED760;
     font-size: 2rem;
 }
 
@@ -26,3 +26,32 @@ nav .title{
     height: auto;    /* keeps image ratio */
     display: block;  /* removes gap under image */
 }
+
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .large-image {
+    width: 100%; /* or specific width */
+    height: auto;
+  }
+  
+  .small-image {
+    position: absolute;
+    top: 15%; /* Adjust to place image where you want */
+    left: 15%; /* Adjust to place image where you want */
+    width: 20%; /* Adjust size of smaller image */
+    height: auto;
+  }
+
+  #login-btn {
+    position: absolute;
+    top: calc(40% + 20% + 20px); /* Adjust based on small image's position and size */
+    left: 20%;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
