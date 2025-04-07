@@ -16,6 +16,7 @@ app.use(express.static('public'));
 app.use(cors());
 
 app.get('/login', (req, res) => {
+  console.log("Login route hit");
   const scope = 'user-top-read user-read-private user-read-email';
   res.redirect(`${SPOTIFY_AUTH_URL}?${querystring.stringify({
     response_type: 'code',

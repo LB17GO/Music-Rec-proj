@@ -47,10 +47,10 @@ nav .title{
 
   #login-btn {
     position: absolute;
-    top: calc(40% + 20% + 20px); /* Adjust based on small image's position and size */
+    top: calc(25% + 25% + 10px); /* Adjust based on small image's position and size */
     left: 20%;
     padding: 10px 20px;
-    background-color: #4CAF50; /* Green background */
+    background-color: #1ED760; /* Green background */
     color: white;
     border: none;
     cursor: pointer;

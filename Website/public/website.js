@@ -1,4 +1,5 @@
 document.getElementById('login-btn').addEventListener('click', () => {
+    console.log("Button clicked");
     window.location.href = 'http://localhost:3000/login';
   });
 
