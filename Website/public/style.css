@@ -1,0 +1,28 @@
+body{
+    background-color: black;
+    margin: 0;
+}
+
+.nav{
+    background-color: black;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;  /* pushes left + right apart */
+    align-items: center; 
+}
+
+nav .home{
+    color: #F05D23;
+    font-size: 2rem;
+}
+
+nav .title{
+    color: #F05D23;
+    font-size: 2rem;
+}
+
+.banner {
+    width: 100%;     /* makes it stretch across page */
+    height: auto;    /* keeps image ratio */
+    display: block;  /* removes gap under image */
+}
