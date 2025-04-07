@@ -5,6 +5,9 @@ const redirect_uri = 'http://localhost:3000/callback';
 const axios = require('axios');
 const cors = require('cors');
 const querystring = require('querystring');
+require('dotenv').config(); // At the top of your server file (e.g., app.js)
+
+console.log(process.env.SPOTIFY_CLIENT_ID); // Test if loaded
 
 const SPOTIFY_AUTH_URL = 'https://accounts.spotify.com/authorize';
 const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
@@ -14,6 +17,16 @@ const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
 
 app.use(express.static('public'));
 app.use(cors());
+
+app.get('/env', (req, res) => {
+  res.json({
+    clientId: process.env.SPOTIFY_CLIENT_ID,
+    redirectUri: process.env.SPOTIFY_REDIRECT_URI,
+    envLoaded: process.env.NODE_ENV || 'development'
+  });
+});
+
+
 
 app.get('/login', (req, res) => {
   console.log("Login route hit");
