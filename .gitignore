@@ -1,0 +1,5 @@
+# Ignore large files
+data/user_item_matrix.csv
+user_item_matrix.csv
+data/als_model.pkl
+
