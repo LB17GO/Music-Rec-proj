@@ -2,6 +2,7 @@ import sqlite3
 import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import MinMaxScaler
 
 # === CONFIG ===
 DB_FILE = "music_recommender.sqlite"
@@ -24,13 +25,8 @@ def search_tracks_by_name(partial_name, limit=10):
     '''
     param = f'%{partial_name}%'
     df = pd.read_sql_query(query, conn, params=(param, limit))
-
-    # Optional formatting: adds a space after each comma
     df['artist_names'] = df['artist_names'].str.replace(',', ', ', regex=False)
-
     return df
-
-
 
 # === Prompt user to search and select a song ===
 def select_song_by_search():
@@ -58,8 +54,7 @@ def select_song_by_search():
         except ValueError:
             print("Please enter a valid number.")
 
-
-# === Get features for all songs ===
+# === Get all songs and their features ===
 def get_all_song_features():
     query = '''
         SELECT t.track_uri, t.track_name,
@@ -77,7 +72,6 @@ def get_all_song_features():
     df['artist_names'] = df['artist_names'].str.replace(',', ', ', regex=False)
     return df
 
-
 # === Compute Cosine Similarity ===
 def recommend_similar_songs(selected_song_uri, all_songs_df, top_n=5):
     feature_columns = [
@@ -91,28 +85,33 @@ def recommend_similar_songs(selected_song_uri, all_songs_df, top_n=5):
     selected_features = selected_song[feature_columns].to_numpy()
     rest_features = rest_songs[feature_columns].to_numpy()
 
+    # Normalize features
+    scaler = MinMaxScaler()
+    rest_features = scaler.fit_transform(rest_features)
+    selected_features = scaler.transform(selected_features)
+
     similarities = cosine_similarity(selected_features, rest_features)[0]
 
     rest_songs = rest_songs.copy()
     rest_songs['similarity'] = similarities
     recommendations = rest_songs.sort_values(by='similarity', ascending=False).head(top_n)
 
-    return recommendations[['track_name', 'artist_names', 'similarity']]
-
+    return recommendations
 
 # === MAIN PROGRAM ===
 def main():
+    print("🎵 Welcome to the Music Recommender 🎵")
+
+    all_songs = get_all_song_features()
+
     while True:
-        print("🎵 Welcome to the Music Recommender 🎵")
-        
         selected_uri, selected_name = select_song_by_search()
         print(f"\nYou selected: {selected_name}")
 
-        all_songs = get_all_song_features()
         recommendations = recommend_similar_songs(selected_uri, all_songs)
 
         print("\n=== Recommended Songs ===")
         for i, row in recommendations.iterrows():
             print(f"{row['track_name']} — {row['artist_names']} (Similarity Score: {row['similarity']:.4f})")
-    
+
 main()
