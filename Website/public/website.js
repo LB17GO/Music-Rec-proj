@@ -1,5 +1,4 @@
 document.getElementById('login-btn').addEventListener('click', () => {
-    console.log("Button clicked");
     window.location.href = 'http://localhost:3000/login';
   });
 
@@ -20,3 +19,21 @@ document.getElementById('login-btn').addEventListener('click', () => {
           recommendations.map(track => `<div>${track.name} by ${track.artists[0].name}</div>`).join('');
       });
     }
+
+
+const button = document.getElementById('reveal')
+
+button.addEventListener('click', function(){
+  button.style.display='none';
+  
+  fetch('/display-recs')  // Change to your real URL
+  .then(response => response.text())  // or .json() if it's JSON
+  .then(data => {
+    result.innerHTML = data;  
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+    result.innerHTML = 'Something went wrong.';
+  });
+  
+})
