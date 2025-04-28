@@ -46,7 +46,7 @@ def recommend_top_n_tracks(playlist_id, n=5):
     user_vector = csr_matrix(user_vector.toarray())  # Ensure proper shape
 
     internal_song_ids, scores = model.recommend(
-        userid=0,
+        userid=2,
         user_items=user_vector,
         N=n,
         filter_already_liked_items=True
@@ -59,7 +59,7 @@ def recommend_top_n_tracks(playlist_id, n=5):
 
     return recommended
 
-top_recs = recommend_top_n_tracks("61jNo7WKLOIQkahju8i0hw", n=5)
+top_recs = recommend_top_n_tracks("1PwREqLT1uU8mbSavX9Hpm", n=5)
 # Unpack recommendations outside the loop and print results
 for i in range(len(top_recs)):
     #Print recommended song ids and scores
