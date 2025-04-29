@@ -153,44 +153,14 @@ app.get('/dashboard', async (req, res) => {
     const allTracks = topTracksData.items.map(item => ({
       id: item.id,
       name: item.name,
-      artistIds: item.artists.map(a => a.id),
-      artists: item.artists.map(a => ({ id: a.id, name: a.name })),
-      album: { id: item.album.id, name: item.album.name },
-      duration_ms: item.duration_ms,
-      popularity: item.popularity
     }));
 
-    const artistIds = [...new Set(allTracks.flatMap(t => t.artistIds))];
-
-    // Fetch genres for artists
-    const artistGenres = {};
-    for (let i = 0; i < artistIds.length; i += 50) {
-      const batch = artistIds.slice(i, i + 50);
-      try {
-        const { data } = await axios.get(
-          `https://api.spotify.com/v1/artists?ids=${batch.join(',')}`,
-          {
-            headers: { Authorization: `Bearer ${accessToken}` },
-            timeout: 10000
-          }
-        );
-        data.artists.forEach(a => {
-          artistGenres[a.id] = a.genres || [];
-        });
-      } catch (err) {
-        console.error('❌ Failed to fetch genres:', err.response?.status, err.response?.data || err.message);
-      }
-    }
 
     // Assemble final track data
     const finalTracks = allTracks.map(t => ({
       id: t.id,
       name: t.name,
-      artists: t.artists.map(a => a.name).join(', '),
-      album: t.album.name,
-      popularity: t.popularity,
-      genres: t.artists.flatMap(a => artistGenres[a.id] || []).join(', '),
-      duration_ms: t.duration_ms
+  
     }));
 
     // Save to CSV
