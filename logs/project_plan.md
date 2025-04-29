@@ -16,7 +16,7 @@
 
 | Member  | Tasks                          | Details                                                                                       |
 |---------|--------------------------------|-----------------------------------------------------------------------------------------------|
-| Lucy    | Perform EDA, share insights    | - Create visualizations (e.g., histograms, scatterplots, heatmaps) to understand the data. <br> - Analyze trends (e.g., popular genres, user listening habits). <br> Perform advanced feature engineering (e.g., extracting tempo bins, clustering genres) <br> Handle class imbalances if necessary <br> - Share insights with the team to guide model development. |
+| Lucy    | Perform EDA, share insights    | - Create visualizations (e.g., histograms, scatterplots, heatmaps) to understand the data. <br> - Analyze trends (e.g., popular genres, user listening habits). <br> - Perform advanced feature engineering (e.g., extracting tempo bins, clustering genres) <br> - Handle class imbalances if necessary <br> - Share insights with the team to guide model development. |
 | Jakub   | Review EDA results             | - Analyze the EDA findings to understand user-item interactions. <br> - Plan how to create a user-item interaction matrix for collaborative filtering. |
 | Waseem  | Review EDA results             | - Analyze the EDA findings to understand song features. <br> - Plan how to extract and use features for content-based filtering. |
 
@@ -24,27 +24,29 @@
 
 ---
 
-## Week 3: Collaborative Filtering
+## Week 3: Building Basic Models
 
 | Member  | Tasks                          | Details                                                                                       |
 |---------|--------------------------------|-----------------------------------------------------------------------------------------------|
-| Lucy    | Provide feedback on CF model   | - Review the collaborative filtering implementation. <br> - Suggest improvements (e.g., handling cold-start problems). <br> Implement basic user-based or item-based collaborative filtering as a baseline model |
-| Jakub   | Build and evaluate CF model    | - Create a user-item interaction matrix (e.g., user-song plays or ratings). <br> - Implement a collaborative filtering algorithm (e.g., SVD, KNN). <br> - Evaluate the model using metrics like RMSE or MAE. |
-| Waseem  | Review CF model                | - Test the collaborative filtering model and provide feedback. <br> - Suggest ways to combine it with content-based filtering later. |
+| Lucy    | Start researching Front End   | - Research how to combine the algorithm with a website. <br> |
+| Jakub   | Build basic CF model    | - Create a user-item interaction matrix (e.g., user-song plays or ratings). <br> - Implement a basic version of a collaborative filtering algorithm (e.g., SVD, KNN). |
+| Waseem  | Build basic CB model    | - Extract song features (e.g., genre, tempo, danceability). <br> - Compute similarity between songs (e.g., cosine similarity <br> Start builiding basic CB model |
 
-**Team Meeting**: Review collaborative filtering results and plan for content-based filtering.
+**Team Meeting**: 
+Review basic CF and CB models, ensure both can be combined later, discuss website research
+
 
 ---
 
-## Week 4: Content-Based Filtering
+## Week 4: Finishing and Evaluating Models
 
 | Member  | Tasks                          | Details                                                                                       |
 |---------|--------------------------------|-----------------------------------------------------------------------------------------------|
-| Lucy    | Provide feedback on CB model   | - Review the content-based filtering implementation. <br> - Suggest improvements (e.g., adding more features like lyrics or mood). <br> Implement additional feature selection techniques (e.g., PCA or mutual information) to improve song similarity|
-| Jakub   | Review CB model                | - Test the content-based filtering model and provide feedback. <br> - Suggest ways to combine it with collaborative filtering later. |
-| Waseem  | Build and evaluate CB model    | - Extract song features (e.g., genre, tempo, danceability). <br> - Compute similarity between songs (e.g., cosine similarity). <br> - Evaluate the model using metrics like precision, recall, or F1-score. |
+| Lucy    | Provide feedback on models and start building Front End   | - Start building website <br> - Suggest improvements to models <br> Implement additional feature selection techniques (e.g., PCA or mutual information) to improve song similarity|
+| Jakub   | Continue to build and evaluate CF model | - Finish CF model <br> - Evaluate the model using metrics like RMSE or MAE. <br>  - Suggest ways to combine it with content based filtering later. |
+| Waseem  | Continue to build and evaluate CB model    |  -Finish CB model <br> - Evaluate the model using metrics like precision, recall, or F1-score. <br> - Suggest ways to combine it with collabrative filtering later |
 
-**Team Meeting**: Review content-based filtering results and plan for the hybrid model.
+**Team Meeting**: Review finished CF and CB models, review basic website, plan for the hybrid model.
 
 ---
 
