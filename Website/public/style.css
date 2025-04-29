@@ -1,0 +1,70 @@
+body{
+    background-color: black;
+    margin: 0;
+}
+
+.nav{
+    background-color: black;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;  /* pushes left + right apart */
+    align-items: center; 
+}
+
+nav .home{
+    color: #1ED760;
+    font-size: 2rem;
+}
+
+nav .title{
+    color: #1ED760;
+    font-size: 2rem;
+}
+
+.banner {
+    width: 100%;     /* makes it stretch across page */
+    height: auto;    /* keeps image ratio */
+    display: block;  /* removes gap under image */
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .large-image {
+    width: 100%; /* or specific width */
+    height: auto;
+  }
+  
+  .small-image {
+    position: absolute;
+    top: 15%; /* Adjust to place image where you want */
+    left: 15%; /* Adjust to place image where you want */
+    width: 20%; /* Adjust size of smaller image */
+    height: auto;
+  }
+
+  #login-btn {
+    position: absolute;
+    top: calc(20% + 25% + 30px); /* Adjust based on small image's position and size */
+    left: 20%;
+    padding: 10px 20px;
+    background-color: #1ED760; /* Green background */
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  #reveal{
+    position: absolute;
+    top: 20%; /* Adjust based on small image's position and size */
+    left: 10%;
+    padding: 10px 20px;
+    background-color: #1ED760; /* Green background */
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+  }
