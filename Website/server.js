@@ -18,28 +18,34 @@ const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
 app.use(express.static('public'));
 app.use(cors());
 app.use(cookieParser());
+client_id = process.env.SPOTIFY_CLIENT_ID;
+client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 // Helper function to refresh access token
-async function refreshAccessToken(refreshToken) {
+async function refreshSpotifyToken(refresh_token) {
+  const tokenEndpoint = 'https://accounts.spotify.com/api/token';
+
+  const data = querystring.stringify({
+    grant_type: 'refresh_token',
+    refresh_token: refresh_token,
+  });
+
+  const authHeader = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
+
   try {
-    const { data } = await axios.post(
-      SPOTIFY_TOKEN_URL,
-      new URLSearchParams({
-        grant_type: 'refresh_token',
-        refresh_token: refreshToken,
-        client_id: process.env.SPOTIFY_CLIENT_ID,
-        client_secret: process.env.SPOTIFY_CLIENT_SECRET,
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }
-    );
-    return data.access_token;
+    const response = await axios.post(tokenEndpoint, data, {
+      headers: {
+        'Authorization': `Basic ${authHeader}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+
+    const accessToken = response.data.access_token;
+    console.log('✅ Refreshed Access Token:', accessToken);
+    return accessToken;
   } catch (error) {
-    console.error('Token refresh failed:', error.response?.data || error.message);
-    return null;
+    console.error('❌ Error refreshing token:', error.response?.data || error.message);
+    throw error;
   }
 }
 
@@ -129,7 +135,7 @@ app.get('/dashboard', async (req, res) => {
   const refreshToken = req.cookies.spotify_refresh_token;
 
   try {
-    const newToken = await refreshAccessToken(refreshToken);
+    const newToken = await refreshSpotifyToken(refreshToken);
     if (newToken) {
       accessToken = newToken;
       res.cookie('spotify_access_token', newToken, { httpOnly: true });
@@ -155,26 +161,23 @@ app.get('/dashboard', async (req, res) => {
       name: item.name,
     }));
 
-
     // Assemble final track data
     const finalTracks = allTracks.map(t => ({
       id: t.id,
       name: t.name,
-  
     }));
 
-    // Save to CSV
+    // Save to a fixed file: "web_top_songs.csv"
     try {
       const dataDir = path.join(__dirname, 'data');
       if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
-      const timestamp = Date.now();
-      const csvFilename = path.join(dataDir, `top_tracks_${timestamp}.csv`);
+      const csvFilename = path.join(dataDir, 'web_top_songs.csv');
       const parser = new Parser({ fields: Object.keys(finalTracks[0]) });
       const csv = parser.parse(finalTracks);
 
       fs.writeFileSync(csvFilename, csv);
-      console.log(`✅ CSV saved: ${csvFilename}`);
+      console.log(`✅ CSV saved to: ${csvFilename}`);
 
       return res.redirect('/dashboard.html');
     } catch (fileError) {
@@ -190,10 +193,13 @@ app.get('/dashboard', async (req, res) => {
 
 const { execFile } = require('child_process'); 
 app.get('/run-algorithm', async (req, res) => {
+  console.log("✅ /run-algorithm called");
+  refreshToken = req.cookies.spotify_refresh_token;
+
   try {
     const dataDir = path.join(__dirname, 'data');
     const modelPath = path.join(__dirname, 'model.pkl');
-    const accessToken = req.cookies.spotify_access_token;
+    const accessToken = await refreshSpotifyToken(refreshToken);
 
     // Find latest CSV file
     const files = fs.readdirSync(dataDir)
@@ -206,9 +212,11 @@ app.get('/run-algorithm', async (req, res) => {
     }
 
     const latestCsv = path.join(dataDir, files[0].name);
+    console.log
 
     // Run the Python script
-    execFile('python3', ['run_model.py', latestCsv, modelPath], async (error, stdout, stderr) => {
+    execFile('/usr/bin/python3', [path.join(__dirname, '..', 'code', 'hybrid_filtering.py')], async (error, stdout, stderr) => {
+      console.log(latestCsv);
       if (error) {
         console.error('Python error:', error, stderr);
         return res.status(500).send('Failed to run algorithm.');

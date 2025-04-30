@@ -64,7 +64,7 @@ def get_playlist_tracks(playlist_id):
         while url:
             response = requests.get(url, headers=HEADERS, params=params)
             if response.status_code != 200:
-                print(f"Failed to fetch tracks: {response.status_code}, {response.text}")
+                #print(f"Failed to fetch tracks: {response.status_code}, {response.text}")
                 break
 
             data = response.json()
@@ -76,14 +76,15 @@ def get_playlist_tracks(playlist_id):
             url = data.get('next')  # Spotify provides the next URL if paginated
             params = {}  # Ensure we don't send params again if using full next URL
     except Exception as e:
-        print(f"Error fetching tracks for playlist {playlist_id}: {e}")
+        pass
+        #print(f"Error fetching tracks for playlist {playlist_id}: {e}")
     
     return tracks
 
 
 # Search and collect playlist-track data
 for keyword in SEARCH_KEYWORDS:
-    print(f"Searching playlists for keyword: {keyword}")
+    #print(f"Searching playlists for keyword: {keyword}")
     try:
         search_url = f"{BASE_URL}/search"
         params = {
@@ -94,7 +95,7 @@ for keyword in SEARCH_KEYWORDS:
 
         response = requests.get(search_url, headers=HEADERS, params=params)
         if response.status_code != 200:
-            print(f"Error searching playlists: {response.status_code}, {response.text}")
+            #print(f"Error searching playlists: {response.status_code}, {response.text}")
             continue
 
         playlists = response.json()['playlists']['items']
@@ -113,7 +114,8 @@ for keyword in SEARCH_KEYWORDS:
                 })
             time.sleep(0.5)  # Pause to avoid rate limits
     except Exception as e:
-        print(f"Error with keyword '{keyword}': {e}")
+        pass
+        #print(f"Error with keyword '{keyword}': {e}")
 
 
 
@@ -160,4 +162,4 @@ for keyword in SEARCH_KEYWORDS:
 # Save results to CSV
 df = pd.DataFrame(playlist_track_pairs)
 df.to_csv("playlist_track_dataset.csv", index=False)
-print("✅ Dataset saved as 'playlist_track_dataset.csv'")
+#print("✅ Dataset saved as 'playlist_track_dataset.csv'")

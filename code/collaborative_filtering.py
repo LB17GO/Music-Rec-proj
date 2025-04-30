@@ -28,7 +28,7 @@ with open(track_map_path) as f:
 # Create reverse track mapping
 reverse_track_map = {v: k for k, v in track_map.items()}
 
-print("Model, matrix, and mappings loaded.")
+#print("Model, matrix, and mappings loaded.")
 
 
 def recommend_top_n_tracks(playlist_id, n=5):
@@ -61,10 +61,10 @@ def recommend_top_n_tracks(playlist_id, n=5):
 
 top_recs = recommend_top_n_tracks("1PwREqLT1uU8mbSavX9Hpm", n=5)
 # Unpack recommendations outside the loop and print results
-for i in range(len(top_recs)):
+#for i in range(len(top_recs)):
     #Print recommended song ids and scores
-    print(f"Recommended song ID: {top_recs[i][0]}, Score: {top_recs[i][1]}")
-    print(f"Recommended song link: https://open.spotify.com/track/{top_recs[i][0]}")
+    #print(f"Recommended song ID: {top_recs[i][0]}, Score: {top_recs[i][1]}")
+    #print(f"Recommended song link: https://open.spotify.com/track/{top_recs[i][0]}")
 
 
 

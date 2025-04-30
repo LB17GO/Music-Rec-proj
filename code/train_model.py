@@ -8,7 +8,7 @@ import json
 
 def main():
     # Print version of scipy
-    print("Scipy version:", scipy.__version__)
+    #print("Scipy version:", scipy.__version__)
 
     # --- Get paths ---
     try:
@@ -21,16 +21,16 @@ def main():
 
     # --- Load matrix ---
     user_item_matrix = load_npz(matrix_path)
-    print(f"Matrix loaded. Shape: {user_item_matrix.shape}")
+    #print(f"Matrix loaded. Shape: {user_item_matrix.shape}")
 
     # --- Train ALS model ---
     model = AlternatingLeastSquares(factors=50, regularization=0.1, iterations=20)
     model.fit(user_item_matrix)
-    print("ALS training complete.")
+    #print("ALS training complete.")
 
     # --- Save model ---
     with open(model_path, "wb") as f:
         pickle.dump(model, f)
-    print(f"Model saved to {model_path}")
+    #print(f"Model saved to {model_path}")
 
 main()

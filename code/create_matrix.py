@@ -12,7 +12,7 @@ def main():
 
     csv_path = parent_dir / "data" / "playlist_track_dataset.csv"
     user_data = pd.read_csv(csv_path)
-    print("Columns in CSV:", user_data.columns)
+    #print("Columns in CSV:", user_data.columns)
 
     # Rename columns if needed
     user_data.columns = ["playlist_id", "track_id"]
@@ -50,6 +50,6 @@ def main():
     save_path = parent_dir / "data" / "user_item_matrix.npz"
     save_npz(save_path, user_item_matrix)
 
-    print(f"User-item matrix saved to: {save_path}")
+    #f"User-item matrix saved to: {save_path}")
 
 main()

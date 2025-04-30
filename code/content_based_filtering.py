@@ -76,24 +76,24 @@ def recommend_similar_songs(selected_song_uris, all_songs_df, top_n=5):
 
 # === MAIN PROGRAM ===
 def main(selected_uris):
-    print("🎵 Welcome to the Music Recommender 🎵")
+    #print("🎵 Welcome to the Music Recommender 🎵")
     all_songs = get_all_song_features()
 
     selected_df = get_song_names_from_uris(selected_uris)
 
-    if selected_df.empty:
-        print("❌ None of the selected track URIs were found in the database.")
-        return
+    #if selected_df.empty:
+        #print("❌ None of the selected track URIs were found in the database.")
+        #return
 
-    print("\nYou selected:")
-    for _, row in selected_df.iterrows():
-        print(f"- {row['track_name']} — {row['artist_names']}")
+    #print("\nYou selected:")
+    #for _, row in selected_df.iterrows():
+        #print(f"- {row['track_name']} — {row['artist_names']}")
 
     recommendations = recommend_similar_songs(selected_uris, all_songs)
 
-    print("\n=== Recommended Songs ===")
-    for _, row in recommendations.iterrows():
-        print(f"{row['track_name']} — {row['artist_names']} (Similarity Score: {row['similarity']:.4f})")
+    #print("\n=== Recommended Songs ===")
+    #for _, row in recommendations.iterrows():
+        #print(f"{row['track_name']} — {row['artist_names']} (Similarity Score: {row['similarity']:.4f})")
 
 
 # === Example Usage ===
